@@ -1,0 +1,15 @@
+# Warehouse Management System Root .htaccess
+Options -Indexes
+
+# Protect sensitive extensions
+<FilesMatch "\.(sql|log|ini|env|sh|bak)$">
+    <IfModule authz_core_module>
+        Require all denied
+    </IfModule>
+    <IfModule !authz_core_module>
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Character encoding
+AddDefaultCharset UTF-8
